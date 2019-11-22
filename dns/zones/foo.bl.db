@@ -1,0 +1,15 @@
+$TTL 1h
+$ORIGIN foo.bl.
+@ IN SOA foo.bl. hostmaster.foo.bl. (
+         2015082505  ; serial
+         15m         ; slaves should check back with us every 15min
+         20          ; slaves should retry (on failure) after 20sec
+         4h          ; slaves stop being authoritative after 4hr without updates
+         1h          ; other NSes should cache our results for 1h
+       )
+     IN NS ns1.foo.bl.
+     IN NS ns2.foo.bl.
+     IN A  10.0.0.42 ; bar
+ns1    IN A  10.0.0.11
+ns2    IN A  10.0.0.12
+bar    IN A  10.0.0.42
